@@ -7,9 +7,15 @@ package com.mir00r;
 public class Utils {
     public static int ROW = 100;
     public static int COL = 100;
+    //    public static int[][] direction = {
+//            {0, 1}, {1, 0}, {0, -1}, {-1, 0}
+//    };
     public static int[][] direction = {
-            {0, 1}, {1, 0}, {0, -1}, {-1, 0}
+            {-1, 0}, {0, -1}, {0, 1}, {1, 0}
     };
+
+    public static int direction1[] = {-1, 0, 0, 1, 1, -1, -1, 1};
+    public static int direction2[] = {0, -1, 1, 0, 1, -1, 1, -1};
 
     public static int getMin(int a, int b) {
         if (a < b) return a;
@@ -36,6 +42,16 @@ public class Utils {
         else return false;
     }
 
+    public static int isValidBoundary(int x, int y, int n, int startLimit) {
+        if (x >= startLimit && x <= n && y >= startLimit && y <= n) return 1;
+        else return 0;
+    }
+
+    public static int isValidBoundary(int x, int y, int r, int c, int startLimit) {
+        if (x >= startLimit && x <= r && y >= startLimit && y <= c) return 1;
+        else return 0;
+    }
+
     public static void init2DArray(int n, int[][] arr, boolean isIndexZero) {
         if (isIndexZero) {
             for (int i = 0; i < n; ++i) {
@@ -46,6 +62,22 @@ public class Utils {
         } else {
             for (int i = 1; i <= n; ++i) {
                 for (int j = 1; j <= n; ++j) {
+                    arr[i][j] = 0;
+                }
+            }
+        }
+    }
+
+    public static void init2DArray(int r, int c, int[][] arr, boolean isIndexZero) {
+        if (isIndexZero) {
+            for (int i = 0; i < r; ++i) {
+                for (int j = 0; j < c; ++j) {
+                    arr[i][j] = 0;
+                }
+            }
+        } else {
+            for (int i = 1; i <= r; ++i) {
+                for (int j = 1; j <= c; ++j) {
                     arr[i][j] = 0;
                 }
             }
