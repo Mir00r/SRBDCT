@@ -1,47 +1,85 @@
 package com.mir00r;
 
 import com.mir00r.linked_list.PrintMiddle;
+import com.mir00r.poker.Poker;
 
 import java.util.*;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+//class TreeNode {
+//    int val;
+//    TreeNode left;
+//    TreeNode right;
+//
+//    TreeNode(int x) {
+//        val = x;
+//    }
+//}
 
-    TreeNode(int x) {
-        val = x;
+interface BaseI { void method();}
+class BaseC {
+    public void method() {
+        System.out.println("do something");
     }
 }
 
+class SampleDemo implements Runnable {
+
+    private Thread t;
+    private String threadName;
+
+    SampleDemo (String threadName){
+        this.threadName = threadName;
+    }
+
+    public void run()
+    {
+        while (true)
+            System.out.print(threadName);
+    }
+
+    public void start ()
+    {
+        if (t == null)
+        {
+            t = new Thread (this, threadName);
+            t.start ();
+        }
+    }
+}
+
+
+
 public class Main {
 
-    public static void helloWorldPrint(int n) {
-        if (n == 0) return;
-        else {
-            helloWorldPrint(n - 1);
-            System.out.println(n + " Hello World!");
-            //helloWorldPrint(n-1);
-        }
-    }
-
-    public List<Integer> preOrderTraversal(TreeNode root) {
-        List<Integer> nodeList = new ArrayList<>();
-        if (root == null) return nodeList;
-
-        Stack<TreeNode> st = new Stack<>();
-        st.push(root);
-
-        while (!st.empty()) {
-            root = st.pop();
-            nodeList.add(root.val);
-            if (root.left != null) st.push(root.left);
-            if (root.right != null) st.push(root.right);
-        }
-        return nodeList;
-    }
-
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int i = 0, j, tc, x, y, n;
+        int[] arr = new int[100];
+        int[] uniqueNumber = new int[100];
+//        String str1 = "hello world";
+//        String str2 = "hello world";
+//
+//        if (str1.equals(str1)) System.out.println("same");
+//        else System.out.println("Not same");
+
+
+//        SampleDemo A = new SampleDemo( "A");
+//        SampleDemo B = new SampleDemo( "B");
+//
+//        B.start();
+//        A.start();
+
+
+//        acceptValidInput(input);
+//        System.out.println("Your input is valid");
+//        input.close();
+
+        Practice practice = new Practice();
+        practice.calculate();
+
+//        Poker poker = new Poker();
+//        poker.run();
+
         //RareElement rareElement = new RareElement();
         //rareElement.calculateRareElement();
 
@@ -58,17 +96,7 @@ public class Main {
         //biColoring.checkBipartiteGraph();
         //helloWorldPrint(10);
 
-        //int a = 020;
-        //System.out.println(a);
-
-        //Check check1 = new Check();
-
         //TreeNode node = new TreeNode();
-
-        Scanner input = new Scanner(System.in);
-        int i = 0, j, tc, x, y, n;
-        int[] arr = new int[100];
-        int[] uniqueNumber = new int[100];
 
         /*tc = input.nextInt();
         int index = 0;
@@ -88,12 +116,13 @@ public class Main {
             System.out.println(uniqueNumber[k]);
         }*/
 
-        PrintMiddle printMiddle = new PrintMiddle();
-        for (int k = 7; k >= 0; k--) {
-            printMiddle.push(k);
-        }
-        printMiddle.printLinkedList();
-        printMiddle.printMiddleNode();
+//        PrintMiddle printMiddle = new PrintMiddle();
+//        for (int k = 7; k >= 0; k--) {
+//            printMiddle.push(k);
+//        }
+//        printMiddle.printLinkedList();
+//        printMiddle.printMiddleNode();
     }
+
 
 }
