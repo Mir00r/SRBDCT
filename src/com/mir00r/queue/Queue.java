@@ -1,4 +1,4 @@
-package com.mir00r;
+package com.mir00r.queue;
 
 /**
  * @author mir00r on 2019-10-03

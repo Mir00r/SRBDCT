@@ -165,7 +165,7 @@ public class Utils {
         }
     }
 
-    public void sortArray(int[] arr, int n) {
+    public static void sortArray(int[] arr, int n) {
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (arr[j + 1] < arr[j]) {
@@ -177,7 +177,7 @@ public class Utils {
         }
     }
 
-    public void sortArray(int[][] arr, int n, int index) {
+    public static void sortArray(int[][] arr, int n, int index) {
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (arr[index][j + 1] < arr[index][j]) {
@@ -189,7 +189,7 @@ public class Utils {
         }
     }
 
-    public void reverseRow(int row, int col, int[][] matrix) {
+    public static void reverseRow(int row, int col, int[][] matrix) {
         int star = 0;
         int end = col - 1;
         while (star < end) {
@@ -201,20 +201,20 @@ public class Utils {
         }
     }
 
-    public void invertRow(int row, int col, int[][] matrix) {
+    public static void invertRow(int row, int col, int[][] matrix) {
         for (int i = 0; i < col; i++) {
             if (matrix[row][i] == 1) matrix[row][i] = 0;
             else matrix[row][i] = 1;
         }
     }
 
-    public void inputArray(int n, int[] arr, Scanner input) {
+    public static void inputArray(int n, int[] arr, Scanner input) {
         for (int i = 0; i < n; i++) {
             arr[i] = input.nextInt();
         }
     }
 
-    public void inputMatrix(int n, int m, int[][] matrix, Scanner input) {
+    public static void inputMatrix(int n, int m, int[][] matrix, Scanner input) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 matrix[i][j] = input.nextInt();
@@ -222,7 +222,7 @@ public class Utils {
         }
     }
 
-    public void initMatrix(int n, int m, int[][] matrix) {
+    public static void initMatrix(int n, int m, int[][] matrix) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 matrix[i][j] = 0;
@@ -230,7 +230,7 @@ public class Utils {
         }
     }
 
-    public void printMatrix(int n, int m, int[][] matrix) {
+    public static void printMatrix(int n, int m, int[][] matrix) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 System.out.print(matrix[i][j] + " ");
@@ -240,20 +240,20 @@ public class Utils {
         System.out.println();
     }
 
-    public void printArray(int n, int[] arr) {
+    public static void printArray(int n, int[] arr) {
         for (int i = 0; i < n; i++) {
             System.out.print(arr[i] + " ");
         }
         System.out.println();
     }
 
-    public int getMax(int x1, int y1, int x2, int y2) {
+    public static int getMax(int x1, int y1, int x2, int y2) {
         int x = Math.abs(x1 - x2);
         int y = Math.abs(y1 - y2);
         return Math.max(x, y);
     }
 
-    public int getDigit(int n) {
+    public static int getDigit(int n) {
         int count = 0;
         while (n != 0) {
             n /= 10;
@@ -262,14 +262,14 @@ public class Utils {
         return count;
     }
 
-    public int getMax(int[] arr, int maxn) {
+    public static int getMax(int[] arr, int maxn) {
         for (int value : arr) {
             if (maxn < value) maxn = value;
         }
         return maxn;
     }
 
-    public int getSum(int[] arr) {
+    public static int getSum(int[] arr) {
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
             if (i % 2 != 0) sum += arr[i];
@@ -277,7 +277,7 @@ public class Utils {
         return sum;
     }
 
-    public String sortString(String inputString) {
+    public static String sortString(String inputString) {
         // convert input string to char array
         char tempArray[] = inputString.toCharArray();
 
@@ -288,7 +288,7 @@ public class Utils {
         return new String(tempArray);
     }
 
-    public String reverseWords(String s) {
+    public static String reverseWords(String s) {
         StringBuilder ans = new StringBuilder();
         String[] splitStr = s.split(" ");
         for (String word : splitStr) {
@@ -302,7 +302,7 @@ public class Utils {
         return ans.toString();
     }
 
-    public boolean isPalindrome(String str) {
+    public static boolean isPalindrome(String str) {
         int start = 0;
         int end = str.length() - 1;
 
@@ -312,5 +312,40 @@ public class Utils {
             end--;
         }
         return true;
+    }
+
+    public static String getReverseString(String str) {
+        StringBuilder ans = new StringBuilder();
+        for (int i = str.length() - 1; i >= 0; i--) {
+            ans.append(str.charAt(i));
+        }
+        return ans.toString();
+    }
+
+    public static boolean alphaNumeric(char char1) {
+        return (char1 >= 'a' && char1 <= 'z')
+                || (char1 >= 'A' && char1 <= 'Z')
+                || (char1 >= '0' && char1 <= '9')
+                || (char1 == '!' || char1 == '@' || char1 == '#' || char1 == '$'
+                || char1 == '%' || char1 == '^' || char1 == '&' || char1 == '*'
+                || char1 == '(' || char1 == ')' || char1 == '-' || char1 == '+');
+    }
+
+    public static boolean lower(char char1) {
+        return (char1 >= 'a' && char1 <= 'z');
+    }
+
+    public static boolean upper(char char1) {
+        return (char1 >= 'A' && char1 <= 'Z');
+    }
+
+    public static boolean numeric(char char1) {
+        return (char1 >= '0' && char1 <= '9');
+    }
+
+    public static boolean special(char char1) {
+        return (char1 == '!' || char1 == '@' || char1 == '#' || char1 == '$'
+                || char1 == '%' || char1 == '^' || char1 == '&' || char1 == '*'
+                || char1 == '(' || char1 == ')' || char1 == '-' || char1 == '+');
     }
 }

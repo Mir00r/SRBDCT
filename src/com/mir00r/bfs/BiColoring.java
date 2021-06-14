@@ -1,6 +1,6 @@
 package com.mir00r.bfs;
 
-import com.mir00r.Queue;
+import com.mir00r.queue.Queue;
 import com.mir00r.Utils;
 
 import java.util.Scanner;

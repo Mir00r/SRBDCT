@@ -29,7 +29,6 @@ import java.util.concurrent.Callable;
 //}
 
 
-
 //        String numbersChar = "abcdefghi";
 //        String hashChar = "jklmnopqrstuvwxyz";
 //
@@ -132,6 +131,76 @@ import java.util.concurrent.Callable;
 //        }
 
 public class Check {
+
+
+    public static String productValues(Inventory[] items) {
+        Map<String, Integer> invCountByCode = new TreeMap<>();
+        StringBuffer result = new StringBuffer();
+
+        for (Inventory item : items) {
+            if (!invCountByCode.containsKey(item.product)) {
+                invCountByCode.put(item.product, 0);
+            }
+            Integer prevLevel = invCountByCode.get(item.product);
+            invCountByCode.put(item.product, prevLevel + item.qty);
+        }
+
+        for (String prodId : invCountByCode.keySet()) {
+            result.append(prodId).append(",").append(invCountByCode.get(prodId)).append("\n");
+        }
+
+        char[] arg = new char[100];
+        Set<Character> ans = new LinkedHashSet<>();
+
+        for (char c : arg) {
+            ans.add(c);
+        }
+
+        int index = 0;
+//        char[] result = new char[ans.size()];
+//
+//        for (Character an : ans) {
+//            result[index++] = an;
+//        }
+
+        return "";
+    }
+
+
+    public static class Inventory {
+        public String product;
+        public int qty;
+
+        public Inventory(String product, int qty) {
+            this.product = product;
+            this.qty = qty;
+        }
+
+
+        @Override
+        public String toString() {
+            return qty + " * " + product;
+        }
+    }
+
+    public static String getUserName (String firstName, String lastName) {
+        if (lastName == null) return capitaliseFirstLetter(firstName);
+        else return capitaliseFirstLetter(lastName) + " , " + capitaliseFirstLetter(firstName);
+    }
+
+
+    public static String capitaliseFirstLetter (String s) {
+        if (s == null || s.length() < 1) {
+            return s;
+        }
+
+        char[] chars = s.toCharArray();
+
+        chars[0] = Character.toUpperCase(chars[0]);
+
+        return String.valueOf(chars);
+    }
+
 
 //    Set<Character> uniqueStrSet = new HashSet<>();
 //    TreeSet<Character> treeSet = new TreeSet<>();
@@ -923,5 +992,261 @@ class Solution {
 //
 //    public boolean isAlphabet(char ch) {
 //        return (ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z');
+//    }
+
+
+//    public int rotatedDigits(int N) {
+//        int ans = 0;
+//        for (int i = 1; i <= N; i++) {
+//            ans += this.digitCount(i);
+//        }
+//        return ans;
+//    }
+//
+//    private int digitCount(int n) {
+//        boolean have2569 = false;
+//        boolean have347 = false;
+//
+//        while (n != 0) {
+//            int mod = n % 10;
+//            n /= 10;
+//            if (mod == 2 || mod == 5 || mod == 6 || mod == 9) {
+//                have2569 = true;
+//            }
+//            if (mod == 3 || mod == 4 || mod == 7) {
+//                have347 = true;
+//            }
+//        }
+//        if (!have347 && have2569) return 1;
+//        return 0;
+//    }
+
+
+//    public int countBinarySubstrings(String s) {
+//        int ans = 0;
+//        int len = s.length();
+////        for (int i = 1; i < len; i += 2) {
+////            for (int j = 0; j < len; j++) {
+////                if ((j + i) < len && this.isBalanced(s.substring(j, (j + i) + 1))) ans++;
+////            }
+////        }
+////        for (int i = 0; i < len - 1; i++) {
+////            System.out.println(s.substring(i, (i + 1) + 1));
+////            if (this.isBalanced(s.substring(i, (i + 1) + 1))) ans++;
+////        }
+////        return ans;
+//
+//        int duplicate = 1;
+//        int previousDuplicate = 0;
+//        int sum = 0;
+//        for (int i = 0; i < s.length() - 1; i++) {
+//            System.out.println(s.substring(i, (i + 1) + 1));
+//            if (s.charAt(i) != s.charAt(i + 1)) {
+//                sum += Math.min(previousDuplicate, duplicate);      //calculate sum on bases of previous duplicates and new duplicates
+//                previousDuplicate = duplicate;
+//                duplicate = 1;
+//            } else
+//                duplicate++;      //count duplicates
+//        }
+//        sum += Math.min(previousDuplicate, duplicate);
+//        return sum;
+//
+//    }
+
+//    public boolean isBalanced(String digit) {
+//        int len = digit.length();
+//        int start = 0;
+//        int end = len - 1;
+//        int misMatch = 0;
+//        boolean isOk = true;
+//
+////        System.out.println("Digit -> " + digit);
+//        for (int i = 1; i < len; i++) {
+//            if (misMatch > 1) break;
+//            if (digit.charAt(i - 1) != digit.charAt(i)) misMatch++;
+//        }
+//        while (start < end) {
+//            if (digit.charAt(start) == digit.charAt(end)) {
+//                isOk = false;
+//                break;
+//            }
+//            start++;
+//            end--;
+//        }
+//        return misMatch == 1 && isOk;
+//    }
+
+
+//    public String reformat(String s) {
+//        StringBuilder ans = new StringBuilder();
+//        int len = s.length();
+//        int alphabetIndex = 0, numericIndex = 0;
+//        int alphabetCount = 0, numericCount = 0;
+//
+//        for (int i = 0; i < len; i++) {
+//            if (s.charAt(i) >= 'a' && s.charAt(i) <= 'z') alphabetCount++;
+//            if (s.charAt(i) >= '0' && s.charAt(i) <= '9') numericCount++;
+//        }
+//
+//        char[] alphabet = new char[alphabetCount];
+//        char[] numeric = new char[numericCount];
+//        for (int i = 0; i < len; i++) {
+//            if (s.charAt(i) >= 'a' && s.charAt(i) <= 'z') alphabet[alphabetIndex++] = s.charAt(i);
+//            if (s.charAt(i) >= '0' && s.charAt(i) <= '9') numeric[numericIndex++] = s.charAt(i);
+//        }
+//
+//        int difference = alphabetCount - numericCount;
+//        if (difference == -1 || difference == 0 || difference == 1) {
+//            if (alphabetIndex > numericIndex) {
+//                for (int i = 0; i < alphabet.length; i++) {
+//                    if (alphabet[i] >= 'a' && alphabet[i] <= 'z') ans.append(alphabet[i]);
+//                    if (i < numericIndex && numeric[i] >= '0' && numeric[i] <= '9') ans.append(numeric[i]);
+//                }
+//            } else {
+//                for (int i = 0; i < numeric.length; i++) {
+//                    if (numeric[i] >= '0' && numeric[i] <= '9') ans.append(numeric[i]);
+//                    if (i < alphabetIndex && alphabet[i] >= 'a' && alphabet[i] <= 'z') ans.append(alphabet[i]);
+//                }
+//            }
+//        }
+//        return ans.toString();
+//    }
+
+
+//    public int maxScore(String s) {
+//        int sum = 0;
+//        int start = 0;
+//        int end = s.length();
+//        for (int i = 0; i < end - 1; i++) {
+//            String leftStr = s.substring(start, i + 1);
+//            String rightStr = s.substring(i + 1, end);
+////            System.out.println("Left -> " + leftStr);
+////            System.out.println("Right -> " + rightStr);
+//
+//            int countSum = this.countBinaryCh(leftStr, 0) + this.countBinaryCh(rightStr, 1);
+////            System.out.println("Sum -> " + countSum);
+//            if (countSum > sum) sum = countSum;
+//        }
+//        return sum;
+//    }
+//
+//    private int countBinaryCh(String str, int binary) {
+//        int count = 0;
+//        if (binary == 1) {
+//            for (int i = 0; i < str.length(); i++) {
+//                if (str.charAt(i) == '1') count++;
+//            }
+//        } else {
+//            for (int i = 0; i < str.length(); i++) {
+//                if (str.charAt(i) == '0') count++;
+//            }
+//        }
+//        return count;
+//    }
+
+//    public boolean buddyStrings(String A, String B) {
+//        int lenA = A.length();
+//        int lenB = B.length();
+//        if (lenA != lenB) return false;
+//        else if (lenA <= 1 || lenB <= 1) return false;
+//        else {
+//            return this.isAdjacentSwapOk(A, B) || this.isIncrementalSwapOk(A, B);
+//        }
+//    }
+//
+//    public boolean isIncrementalSwapOk(String A, String B) {
+//        for (int i = 1; i < A.length(); i++) {
+//            String swapStr = this.swap(A, 0, i);
+//            System.out.println("Incremental Swap Str -> " + swapStr);
+//            if (swapStr.equals(B)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//
+//    public boolean isAdjacentSwapOk(String A, String B) {
+//        for (int i = 1; i < A.length(); i++) {
+//            String swapStr = this.swap(A, i - 1, i);
+//            System.out.println("Adjacent Swap Str -> " + swapStr);
+//            if (swapStr.equals(B)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//
+//    public String swap(String str, int i, int j) {
+//        StringBuilder sb = new StringBuilder(str);
+//        sb.setCharAt(i, str.charAt(j));
+//        sb.setCharAt(j, str.charAt(i));
+//        return sb.toString();
+//    }
+
+
+//    public int repeatedStringMatch(String A, String B) {
+//        int ans = 1;
+//        int lenB = B.length();
+//        boolean repeatStr = false;
+//        StringBuilder queryStr = new StringBuilder(A);
+//
+//        while (queryStr.length() < lenB) {
+//            queryStr.append(A);
+//            ans++;
+//        }
+//
+//        if (queryStr.indexOf(B) != -1) return ans;
+//        else {
+//            queryStr.append(A);
+//            ans++;
+//        }
+//
+//        System.out.println("Final Str -> " + queryStr);
+//
+//        if (queryStr.indexOf(B) != -1) return ans;
+//        else return -1;
+//    }
+
+//    public boolean validPalindrome(String s) {
+//        int start = 0;
+//        int end = s.length() - 1;
+//
+//        while (start < end) {
+//            if (s.charAt(start) == s.charAt(end)) {
+//                start++;
+//                end--;
+//            } else {
+//                if (this.isPalindrome(s, start + 1, end)) return true;
+//                return this.isPalindrome(s, start, end - 1);
+//            }
+//        }
+//        return true;
+//    }
+//
+//    private boolean isPalindrome(String str, int start, int end) {
+//        while (start < end) {
+//            if (str.charAt(start) != str.charAt(end)) return false;
+//            start++;
+//            end--;
+//        }
+//        return true;
+//    }
+//
+//    private String getOperationStr(String str, int skipIndex) {
+//        StringBuilder operationStr = new StringBuilder();
+//        for (int i = 0; i < str.length(); i++) {
+//            if (i != skipIndex) operationStr.append(str.charAt(i));
+//        }
+////        System.out.println(operationStr.toString());
+//        return operationStr.toString();
+//    }
+
+//    public int ping(int t) {
+//        Queue<Integer> myQueue = new LinkedList<>();
+//        myQueue.offer(t);
+//        while (myQueue.peek() < (t - 3000)) {
+//            myQueue.poll();
+//        }
+//        return myQueue.size();
 //    }
 }
