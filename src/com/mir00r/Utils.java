@@ -247,6 +247,13 @@ public class Utils {
         System.out.println();
     }
 
+    public static void printArray(int[] arr) {
+        for (int j : arr) {
+            System.out.print(j + " ");
+        }
+        System.out.println();
+    }
+
     public static int getMax(int x1, int y1, int x2, int y2) {
         int x = Math.abs(x1 - x2);
         int y = Math.abs(y1 - y2);

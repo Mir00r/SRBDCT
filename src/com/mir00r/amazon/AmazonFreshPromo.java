@@ -69,9 +69,9 @@ public class AmazonFreshPromo {
                 })
                 .collect(Collectors.toList());
 
-        int result = foo(codeList, shoppingCart);
+//        int result = foo(codeList, shoppingCart);
 
-        bufferedWriter.write(String.valueOf(result));
+//        bufferedWriter.write(String.valueOf(result));
         bufferedWriter.newLine();
 
         bufferedReader.close();

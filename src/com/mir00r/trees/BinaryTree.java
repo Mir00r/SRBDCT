@@ -1,5 +1,7 @@
 package com.mir00r.trees;
 
+import java.util.*;
+
 /**
  * @author mir00r on 14/6/21
  * @project IntelliJ IDEA
@@ -7,10 +9,12 @@ package com.mir00r.trees;
 
 class Node {
     int data;
+    int horizontalDistance;
     Node left, right;
 
     public Node(int data) {
         this.data = data;
+        this.horizontalDistance = Integer.MAX_VALUE;
         this.left = this.right = null;
     }
 }
@@ -75,6 +79,40 @@ class Tree {
         System.out.println(node.data);
     }
 
+    void bottomView(Node node) {
+        if (node == null) return;
+
+        int horizontalDistance = 0;
+        Map<Integer, Integer> map = new TreeMap<>();
+        Queue<Node> queue = new LinkedList<>();
+
+        node.horizontalDistance = horizontalDistance;
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            Node temp = queue.remove();
+
+            horizontalDistance = temp.horizontalDistance;
+            map.put(horizontalDistance, temp.data);
+
+            if (temp.left != null) {
+                temp.left.horizontalDistance = horizontalDistance - 1;
+                queue.add(temp.left);
+            }
+
+            if (temp.right != null) {
+                temp.right.horizontalDistance = horizontalDistance + 1;
+                queue.add(temp.right);
+            }
+        }
+
+        Set<Map.Entry<Integer, Integer>> set = map.entrySet();
+
+        for (Map.Entry<Integer, Integer> me : set) {
+            System.out.print(me.getValue() + " ");
+        }
+    }
+
     // ------------ tree travers ----------------- //
 
     void inOrder(Node node) {
@@ -126,7 +164,8 @@ public class BinaryTree {
 
     public static void main(String[] args) {
 //        new Tree().reverseTree(initData());
-        System.out.println(new Tree().isBST(initBSTData(), Integer.MIN_VALUE, Integer.MAX_VALUE));
+//        System.out.println(new Tree().isBST(initBSTData(), Integer.MIN_VALUE, Integer.MAX_VALUE));
+        new Tree().bottomView(initData());
     }
 }
 
