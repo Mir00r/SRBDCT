@@ -260,13 +260,23 @@ public class Utils {
         return Math.max(x, y);
     }
 
-    public static int getDigit(int n) {
+    public static int getDigitCount(int n) {
         int count = 0;
         while (n != 0) {
             n /= 10;
             count++;
         }
         return count;
+    }
+
+    public static int getDigitSum(int n) {
+        int sum = 0;
+        while (n != 0) {
+            int digit = n % 10;
+            sum += digit;
+            n /= 10;
+        }
+        return sum;
     }
 
     public static int getMax(int[] arr, int maxn) {
@@ -282,17 +292,6 @@ public class Utils {
             if (i % 2 != 0) sum += arr[i];
         }
         return sum;
-    }
-
-    public static String sortString(String inputString) {
-        // convert input string to char array
-        char tempArray[] = inputString.toCharArray();
-
-        // sort tempArray
-        Arrays.sort(tempArray);
-
-        // return new sorted string
-        return new String(tempArray);
     }
 
     public static String reverseWords(String s) {
@@ -327,6 +326,37 @@ public class Utils {
             ans.append(str.charAt(i));
         }
         return ans.toString();
+    }
+
+    public static String sortString2(String str) {
+        char[] strArr = str.toCharArray();
+        char temp;
+
+        int i = 0;
+        while (i <= strArr.length) {
+            int j = i + 1;
+            while (j <= strArr.length) {
+                if (strArr[i] < strArr[j]) {
+                    temp = strArr[i];
+                    strArr[i] = strArr[j];
+                    strArr[j] = temp;
+                }
+                j++;
+            }
+            i++;
+        }
+        return Arrays.toString(strArr);
+    }
+
+    public static String sortString1(String inputString) {
+        // convert input string to char array
+        char tempArray[] = inputString.toCharArray();
+
+        // sort tempArray
+        Arrays.sort(tempArray);
+
+        // return new sorted string
+        return new String(tempArray);
     }
 
     public static boolean alphaNumeric(char char1) {
