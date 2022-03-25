@@ -328,6 +328,17 @@ public class Utils {
         return ans.toString();
     }
 
+    public static int[] removeZeros(int[] a) {
+        int j = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != 0) {
+                a[j] = a[i];
+                j++;
+            }
+        }
+        return a;
+    }
+
     public static String sortString2(String str) {
         char[] strArr = str.toCharArray();
         char temp;
