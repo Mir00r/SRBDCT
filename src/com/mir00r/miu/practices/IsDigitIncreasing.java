@@ -6,8 +6,8 @@ package com.mir00r.miu.practices;
  */
 public class IsDigitIncreasing {
 
-    public static int isDigitIncreasing(int n) {
-
+    public static
+    int isDigitIncreasing(int n) {
         for (int i = 1; i < 10; i++) {
             int digitSum = 0;
             int digitMultiply = 0;
@@ -25,5 +25,6 @@ public class IsDigitIncreasing {
         System.out.println(isDigitIncreasing(36));
         System.out.println(isDigitIncreasing(984));
         System.out.println(isDigitIncreasing(7404));
+        System.out.println(isDigitIncreasing(37));
     }
 }

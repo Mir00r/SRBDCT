@@ -1,14 +1,6 @@
 package com.mir00r;
 
-import com.mir00r.amazon.TrappingRainWater;
-import com.mir00r.hackerrank.zalando.FindSignNumber;
-import com.mir00r.hackerrank.zalando.FindSmallestNumber;
-import com.mir00r.hackerrank.zalando.TheInquiringManager;
-import com.mir00r.hackerrank.zalando.WhichWarehousesCanFulfillTheseOrders;
-import com.mir00r.linked_list.LinkListUtil;
-
 import java.io.IOException;
-import java.util.LinkedHashMap;
 
 public class Main {
 

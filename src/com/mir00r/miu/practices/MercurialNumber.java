@@ -6,14 +6,14 @@ package com.mir00r.miu.practices;
  */
 public class MercurialNumber {
 
-    public static int isMercurial(int[] arr) {
-        if (arr.length == 0 || arr.length == 1) return 1;
+    public static int isMercurial(int[] a) {
+        if (a.length == 0 || a.length == 1) return 1;
         boolean oneStart = false;
         boolean oneEnd = false;
         int oneStartIndex = 0;
         int oneEndIndex = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == 1) {
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == 1) {
                 if (!oneStart) {
                     oneStartIndex = i;
                     oneStart = true;
@@ -25,7 +25,7 @@ public class MercurialNumber {
         }
         if (oneEnd) {
             for (int i = oneStartIndex; i <= oneEndIndex; i++) {
-                if (arr[i] == 3) return 0;
+                if (a[i] == 3) return 0;
             }
         }
         return 1;
