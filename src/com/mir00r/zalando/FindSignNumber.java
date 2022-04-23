@@ -1,8 +1,6 @@
-package com.mir00r.hackerrank.zalando;
+package com.mir00r.zalando;
 
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  * @author mir00r on 22/10/21

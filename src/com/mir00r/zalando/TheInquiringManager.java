@@ -1,4 +1,4 @@
-package com.mir00r.hackerrank.zalando;
+package com.mir00r.zalando;
 
 import java.util.*;
 

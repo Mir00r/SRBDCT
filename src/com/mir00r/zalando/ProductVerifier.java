@@ -1,4 +1,4 @@
-package com.mir00r.hackerrank.zalando;
+package com.mir00r.zalando;
 
 /**
  * @author mir00r on 22/10/21

@@ -1,7 +1,6 @@
-package com.mir00r.hackerrank.zalando;
+package com.mir00r.zalando;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
