@@ -16,6 +16,6 @@ public class GasStation {
     public static void main (String[] args) {
         // keep this function call here
         Scanner s = new Scanner(System.in);
-        System.out.print(gasStation(s.nextLine()));
+//        System.out.print(gasStation(s.nextLine()));
     }
 }

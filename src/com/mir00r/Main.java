@@ -1,6 +1,9 @@
 package com.mir00r;
 
 import java.io.IOException;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -39,58 +42,192 @@ public class Main {
 //        input.close();
 
 //        String val = "my.song.mp3 11b greatSong.flac 1000b not3.txt 5b video.mp4 200b game.exe 100b mov!e.mkv 10000b";
-        String val = "my.song.mp3 11b\ngreatSong.flac 1000b\nnot3.txt 5b\nvideo.mp4 200b\ngame.exe 100b\nmov!e.mkv 10000b";
+//        String val = "my.song.mp3 11b\ngreatSong.flac 1000b\nnot3.txt 5b\nvideo.mp4 200b\ngame.exe 100b\nmov!e.mkv 10000b";
+//
+//        String[] vPart = val.split("\n");
+//
+//        String music = "music";
+//        String images = "images";
+//        String movies = "movies";
+//        String other = "other";
+//
+//        int musicFileSize = 0;
+//        int imagesFileSize = 0;
+//        int moviesFileSize = 0;
+//        int otherFileSize = 0;
+//
+//        for (String s : vPart) {
+//            String[] diskInfo = s.split(" ");
+//            String[] fileNames = diskInfo[0].split("\\.");
+//            String fileExtension = fileNames[fileNames.length - 1];
+//
+//            String fileSize = diskInfo[1].replace("b", "");
+//            switch (fileExtension) {
+//                case "mp3":
+//                case "aac":
+//                case "flac":
+//                    musicFileSize += Integer.parseInt(fileSize);
+//                    continue;
+//                case "jpg":
+//                case "bmp":
+//                case "gif":
+//                    imagesFileSize += Integer.parseInt(fileSize);
+//                    continue;
+//                case "mp4":
+//                case "avi":
+//                case "mkv":
+//                    moviesFileSize += Integer.parseInt(fileSize);
+//                    continue;
+//                default:
+//                    otherFileSize += Integer.parseInt(fileSize);
+//            }
+//        }
+//
+//        StringBuilder ans = new StringBuilder();
+//        ans.append(music).append(" ")
+//                .append(musicFileSize).append("b").append("\n")
+//                .append(images).append(" ")
+//                .append(imagesFileSize).append("b").append("\n")
+//                .append(movies).append(" ")
+//                .append(moviesFileSize).append("b").append("\n")
+//                .append(other).append(" ")
+//                .append(otherFileSize).append("b");
+//
+//        System.out.println(ans.toString());
+//        functionalEquivalentTest();
+//        fixAgeVariable();
+//        forestCount();
+//        testLambdaFunction();
+//        codePrint(0, 2);
+//        codeTest1();
+//        listCodeTest();
+        codeTest2();
+    }
 
-        String[] vPart = val.split("\n");
+    public static void codeTest2() {
+        List<Boolean> list = new ArrayList<>();
+        list.add(true);
+        list.add(Boolean.parseBoolean("FalSe"));
+        list.add(Boolean.TRUE);
+        System.out.print(list.size());
+        System.out.print(list.get(1) instanceof Boolean);
 
-        String music = "music";
-        String images = "images";
-        String movies = "movies";
-        String other = "other";
+//        for (int i = 0; i < 10; i = i++) {
+//            i += 1;
+//            System.out.println("Hello World!");
+//        }
+//        System.out.print("apple".compareTo("banana"));
 
-        int musicFileSize = 0;
-        int imagesFileSize = 0;
-        int moviesFileSize = 0;
-        int otherFileSize = 0;
+//        String message = "Hello world!";
+//        String newMessage = message.substring(6, 12) + message.substring(12, 6);
+//        System.out.println(newMessage);
+    }
 
-        for (String s : vPart) {
-            String[] diskInfo = s.split(" ");
-            String[] fileNames = diskInfo[0].split("\\.");
-            String fileExtension = fileNames[fileNames.length - 1];
+    public static void codeTest1() {
+        String str = "abcde";
+        System.out.println(str);
+        str.trim();
+        System.out.println(str);
+        str.toUpperCase();
+        System.out.println(str);
+        str.substring(3, 4);
+        System.out.println(str);
+    }
 
-            String fileSize = diskInfo[1].replace("b", "");
-            switch (fileExtension) {
-                case "mp3":
-                case "aac":
-                case "flac":
-                    musicFileSize += Integer.parseInt(fileSize);
-                    continue;
-                case "jpg":
-                case "bmp":
-                case "gif":
-                    imagesFileSize += Integer.parseInt(fileSize);
-                    continue;
-                case "mp4":
-                case "avi":
-                case "mkv":
-                    moviesFileSize += Integer.parseInt(fileSize);
-                    continue;
-                default:
-                    otherFileSize += Integer.parseInt(fileSize);
-            }
+    public static void listCodeTest() {
+        List list = new ArrayList();
+        list.add("hello");
+        list.add(2);
+        System.out.print(list.get(0) instanceof Object);
+        System.out.print(list.get(1) instanceof Integer);
+    }
+
+    public static void arrayLengthCheck() {
+        int[] array = {1, 2, 3, 4};
+        for (int j : array) {
+            System.out.print(j);
+        }
+    }
+
+    //        what values for x and y will cause this code to print btc
+    public static void codePrint(int x, int y) {
+        String buy = "bitcoin";
+        System.out.println(buy.substring(x, x + 1) + buy.substring(y, y + 1));
+    }
+
+    public static void testLambdaFunction() {
+        Function<Integer, String> oddOrEven = x -> x % 2 == 0 ? "even" : "odd";
+        System.out.println(oddOrEven);
+    }
+
+    class Employee {
+        String type;
+        String name;
+
+        public Employee(String name) {
+            this.name = name;
         }
 
-        StringBuilder ans = new StringBuilder();
-        ans.append(music).append(" ")
-                .append(musicFileSize).append("b").append("\n")
-                .append(images).append(" ")
-                .append(imagesFileSize).append("b").append("\n")
-                .append(movies).append(" ")
-                .append(moviesFileSize).append("b").append("\n")
-                .append(other).append(" ")
-                .append(otherFileSize).append("b");
+        public String getName() {
+            return name;
+        }
 
-        System.out.println(ans.toString());
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+    }
+
+    public static void forestCount() {
+        Map<String, Integer> forestSpecies = new HashMap<>();
+        forestSpecies.put("Amazon", 3000);
+        forestSpecies.put("Congo", 10000);
+        forestSpecies.put("Daintree", 15000);
+        forestSpecies.put("Amazon", 40000);
+        System.out.println(forestSpecies.size());
+    }
+
+    public static void employeeClassTest() {
+        List<Employee> employeeList = new ArrayList<>();
+        List<String> names = employeeList.stream().map(Employee::getName).collect(Collectors.toList());
+    }
+
+    public static void castTest() {
+        double pickle = 2;
+        int jar = (int) pickle;
+    }
+
+    static int age;
+
+    public static void fixAgeVariable() {
+        System.out.println("Your age is: " + age);
+    }
+
+    public static void polymorphismExample() {
+        List[] myList = {new ArrayList<>(), new LinkedList<>(), new Stack<>(), new Vector<>()};
+        for (List list : myList) {
+            list.clear();
+        }
+    }
+
+    public static void functionalEquivalentTest() {
+        List<Integer> numbers = List.of(1, 2, 3, 4);
+        int total = 0;
+        for (Integer x : numbers) {
+            if (x % 2 == 0)
+                total += x * x;
+        }
+        System.out.println(total);
+
+        int total1 = numbers.stream().filter(x -> x % 2 == 0).mapToInt(x -> x * x).sum();
+        System.out.println(total1);
     }
 
     public int firstfunction(int N) {
